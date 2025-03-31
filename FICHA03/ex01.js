@@ -1,59 +1,60 @@
-// 1. Criando o objeto com entrada do utilizador
-/* let compra = {
-    nomeProduto: prompt("Digite o nome do produto:"),
-    catProduto: prompt("Digite a categoria do produto:")
-}; */
+// Exercício 1
+let nomeProduto = prompt("Nome do produto:");
+let catProduto = prompt("Categoria do produto:");
 
 let compra = {
-    nomeProduto: "XPTO",
-    catProduto: "AAA"
+    nomeProduto: nomeProduto,
+    catProduto: catProduto
 };
 
-// 2. Imprimindo o objeto inicial
+// Exercício 2
 console.log("Objeto inicial:", compra);
 
-// 3. Adicionando precoBase
+// Exercício 3
 compra.precoBase = 2.10;
 
-// 4. Adicionando txIVA e imprimindo novamente
+// Exercício 4
 compra.txIVA = 23;
-console.log("Objeto após adicionar precoBase e txIVA:", compra);
+console.log("Com precoBase e txIVA:", compra);
 
-// 5. Alterando precoBase para 2.50
+// Exercício 5
 compra.precoBase = 2.50;
 
-// 6. Criando precoFinal com base no precoBase e txIVA
-compra.precoFinal = function() {
-    return this.precoBase + (this.precoBase * this.txIVA / 100);
+// Exercício 6
+compra.precoFinal = function () {
+    return this.precoBase * (1 + this.txIVA / 100);
 };
 
-console.log("Preço final com IVA:", compra.precoFinal());
+console.log(`Preço final: ${compra.precoFinal().toFixed(2)} €`);
 
-
-// 7. Criando o subobjeto dadosEncomenda
+// Exercício 7
 compra.dadosEncomenda = {
     dataEncomenda: "2023-03-27",
-    prazoEntrega: 7,
+    prazoEntrega: "7 dias",
     localEntrega: "Avenida do Mar, 74, 4460-810 Matosinhos"
 };
 
-// 8. Função para mostrar o número de propriedades do objeto
-function showLength() {
-    console.log("Número de propriedades:", Object.keys(compra).length);
-}
+console.log("Objeto com subobjeto:", compra);
 
-// 9. Função para listar todas as propriedades do objeto
-function showProperties() {
-    console.log("Propriedades do objeto:", Object.keys(compra));
+// Exercício 8
+function showLength(obj) {
+    console.log(`Número de propriedades: ${Object.keys(obj).length}`);
 }
+showLength(compra);
 
-// 10. Função para remover uma propriedade específica do objeto
-function removeProp(prop) {
-    if (compra.hasOwnProperty(prop)) {
-        delete compra[prop];
-        console.log(`Propriedade '${prop}' removida.`);
-    } else {
-        console.log(`Propriedade '${prop}' não encontrada.`);
+// Exercício 9
+function showProperties(obj) {
+    console.log("Propriedades do objeto:");
+    for (let prop in obj) {
+        console.log(prop);
     }
 }
+showProperties(compra);
 
+// Exercício 10
+function removeProp(prop) {
+    delete compra[prop];
+    console.log(`Propriedade '${prop}' removida (se existia).`);
+}
+removeProp("txIVA");
+console.log("Objeto após remoção:", compra);

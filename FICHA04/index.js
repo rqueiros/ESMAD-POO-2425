@@ -1,97 +1,71 @@
-
-// Importa modulo data.js
-import * as data from "./data.js";
-
+// Importa módulo data.js
+import * as data from "./data.js"
 let listUsers = []
-listUsers = data.init();
+listUsers = data.init()
+console.log(listUsers);
 
-// 1) Listar nome de jogadores baseado em nível
-/* const nivelUtilizador = +prompt("Digite o nível dos jogadores que deseja listar:");
-if (!isNaN(nivelUtilizador)) {
-    listarNivel(nivelUtilizador);
-} else {
-    alert("Por favor, insira um número válido.");
-} */
-
+// Alínea 1
 function listarNivel(nivel) {
-    const filtrados = listUsers.filter(jogador => jogador.nivel === nivel);
-    const nomesFiltrados = filtrados.map(j => j.nome).join("\n")
-    if (filtrados.length > 0) {
-        alert(`Jogadores do nível ${nivel} \n ${nomesFiltrados}`);
-    } else {
-        alert(`Nenhum jogador encontrado no nível ${nivel}`);
-    }
+    const nomes = listUsers
+        .filter(u => u.nivel === nivel)
+        .map(u => u.nome)
+        .join(", ");
+    alert(`Jogadores no nível ${nivel}: ${nomes}`);
 }
 
-// 2) Listar a soma de pontos de um jogador de determinado nível
-//somarPontos(2)
+// Alínea 2
 function somarPontos(nivel) {
-    const totalPontos = listUsers
-        .filter(jogador => jogador.nivel === nivel)
-        .reduce((soma, jogador) => soma + jogador.pontos, 0);
-
-    console.log(`Total de pontos dos jogadores do nível ${nivel}: ${totalPontos}`);
+    const total = listUsers
+        .filter(u => u.nivel === nivel)
+        .reduce((acc, u) => acc + u.pontos, 0);
+    console.log(`Total de pontos no nível ${nivel}: ${total}`);
 }
 
-// 3) Devolver true ou false relativamente à existência de pelo menos um jogador de um nível passado como parâmetro
-//console.log(verificarNivel(4));
-
+// Alínea 3
 function verificarNivel(nivel) {
-    return listUsers.some(jogador => jogador.nivel === nivel);
+    const existe = listUsers.some(u => u.nivel === nivel);
+    console.log(`Existe jogador no nível ${nivel}? ${existe}`);
+    return existe;
 }
 
-// 4) Pesquisar colecionaiveis
-//const colecionavel = 'badge 3'
-//console.log(`Colecionável ${colecionavel}: ${pesquisarColecionaveis(colecionavel)}`);
-
+// Alínea 4
 function pesquisarColecionaveis(colecionavel) {
-    return listUsers.some(jogador => jogador.colecionaveis.includes(colecionavel));
+    const existe = listUsers.some(u => u.colecionaveis.includes(colecionavel));
+    console.log(`Existe jogador com '${colecionavel}'? ${existe}`);
+    return existe;
 }
 
-// 5) Mostrar nomes dos jogadores que têm um determinado colecionavel
-//mostrarJogadores('badge 3');
+// Alínea 5
 function mostrarJogadores(colecionavel) {
-    const jogadoresComColecionavel = listUsers
-        .filter(jogador => jogador.colecionaveis.includes(colecionavel))
-        .map(jogador => jogador.nome);
-
-    if (jogadoresComColecionavel.length > 0) {
-        alert(`Jogadores com '${colecionavel}':\n${jogadoresComColecionavel.join("\n")}`);
-    } else {
-        alert(`Nenhum jogador possui o colecionável '${colecionavel}'.`);
-    }
+    const nomes = listUsers
+        .filter(u => u.colecionaveis.includes(colecionavel))
+        .map(u => u.nome)
+        .join(", ");
+    alert(`Jogadores com '${colecionavel}': ${nomes}`);
 }
 
-// 6) Cria um leaderboard e apreta-o numa janela de alerta
-//listaTabClass()
+// Alínea 6
 function listaTabClass() {
-    const ranking = listUsers
-        .sort((a, b) => b.pontos - a.pontos) // Ordena do maior para o menor
-        .map(jogador => `${jogador.pontos} ${jogador.nome}`)
+    const lista = listUsers
+        .slice()
+        .sort((a, b) => b.pontos - a.pontos)
+        .map(u => `${u.nome}: ${u.pontos} pontos`)
         .join("\n");
-
-    alert(`Tabela de Classificação:\n ${ranking}`);
+    alert(`Classificação:\n${lista}`);
 }
 
-// 7) Incrementa 100 pontos a todos os jogadores que pertencem a determinado nível
-//console.log(listUsers);
-//listUsers = giveReward(2)
-//console.log(listUsers);
-
+// Alínea 7
 function giveReward(nivel) {
-    return listUsers.map(jogador => 
-        jogador.nivel === nivel 
-            ? { ...jogador, pontos: jogador.pontos + 100 } 
-            : jogador
-    );
-    
+    listUsers.forEach(u => {
+        if (u.nivel === nivel) {
+            u.pontos += 100;
+        }
+    });
+    console.log(`Recompensa atribuída a jogadores do nível ${nivel}.`);
 }
 
-// 8) somar todos os pontos de todos os jogadores
-sumPontos()
+// Alínea 8
 function sumPontos() {
-    const totalPontos = listUsers
-        .reduce((soma, jogador) => soma + jogador.pontos, 0);
-    console.log(`Total de pontos de todos os jogadores: ${totalPontos}`);
+    const total = listUsers.reduce((acc, u) => acc + u.pontos, 0);
+    console.log(`Total de pontos de todos os jogadores: ${total}`);
 }
-    
