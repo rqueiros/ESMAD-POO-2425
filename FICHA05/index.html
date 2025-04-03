@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestor de Jogos</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    form div { margin-bottom: 10px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    table, th, td { border: 1px solid #ccc; }
+    th, td { padding: 8px; text-align: left; }
+    button { margin-right: 5px; }
+  </style>
+</head>
+<body>
+  <h1>Gestor de Jogos de Computador</h1>
+<!--Formulário-->
+  <form id="gameForm">
+    <div>
+      <label>Nome do Jogo: <input type="text" id="nome" required></label>
+    </div>
+    <div>
+      <label>Ano de Lançamento: <input type="number" id="ano" required></label>
+    </div>
+    <div>
+      <label>Género: <input type="text" id="genero" required></label>
+    </div>
+    <div>
+      <label>Plataforma:
+        <select id="plataforma" multiple required>
+          <option value="PC">PC</option>
+          <option value="PS5">PS5</option>
+          <option value="Xbox">Xbox</option>
+        </select>
+      </label>
+    </div>
+    <div>
+      <label>Avaliação (1-10): <input type="number" id="avaliacao" min="1" max="10" required></label>
+    </div>
+    <div>
+      <input type="submit" value="Adicionar Jogo"></input>
+    </div>
+  </form>
+<!--Filtro-->
+  <div>
+    <label>Filtrar por Género: <input type="text" id="filtroGenero"></label>
+    <label>Filtrar por Plataforma:
+      <select id="filtroPlataforma">
+        <option value="">Todas</option>
+        <option value="PC">PC</option>
+        <option value="PS5">PS5</option>
+        <option value="Xbox">Xbox</option>
+      </select>
+    </label>
+    <button id="ordenarBtn">Ordenar Z-A</button>
+  </div>
+<!--Tabela com os jogos-->
+  <table id="tabelaJogos">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Ano</th>
+        <th>Género</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script src="script.js"></script>
+</body>
+</html>
