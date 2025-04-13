@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>myCardioApp</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+
+</head>
+
+
+<body>
+    <div class="container col-md-6 border bg-light">
+        <div class="jumbotron bg-primary text-white rounded">
+            <h1 class="display-6">myCardioApp</h1>
+            <p class="lead">Coronary Risk Calculator</p>
+            <hr class="my-2">
+        </div>
+
+
+        <form id="idForm">
+            <div class="col-md-6 has-validation">
+                <label for="txtColesterol" class="form-label">Colesterol Total</label>
+                <input type="text" class="form-control" id="txtColesterol" value="" required>
+            </div>
+            
+            <div class="col-md-6 has-validation">
+                <label for="txtHDL" class="form-label">HDL (lipoproteína de alta densidade)</label>
+                <input type="text" class="form-control" id="txtHDL" value="" required>
+            </div>
+
+            <div class="col-md-6 has-validation">
+                <label for="txtTG" class="form-label">Triglecerídeos (TG)</label>
+                <input type="text" class="form-control" id="txtTG" value="" required>
+            </div>
+
+            <div class="col-md-6 mt-2 mb-2">            
+                <button id = "btnCalc" class="btn btn-warning btn-block" type="button">Calcular LDL-C</button>
+            </div>
+
+            <div class="col-md-6 has-validation">
+                        <label for="txtLDL" class="form-label">LDL(Lipoproteína baixa densidade)</label>
+                        <input type="text" class="form-control" id="txtLDL" value=""  readonly="true" style="font-weight:bold;">
+            </div>
+
+            <div class="col-md-6 mt-2 mb-2">
+                <button id="btnAddTable" class="btn btn-block btn-dark" type="submit">SUBMETER</button>
+            </div>
+        </form>
+        <br>
+        <br>
+       <!-- FILTROS E ORDENAÇÃO-->
+        
+        <div class="col-12 my-2">      
+                
+                <label for="txtFilter">Filtrar Risco Coronário</label>
+                <select id="seletorFilter">
+                    <option value="Todos os registos">Todos os registos</option>
+                    <option value="Alto Risco Coronário">Alto Risco Coronário</option>
+                    <option value="Risco Coronário Médio">Risco Coronário Médio</option>
+                    <option value="Baixo Risco Coronário">Baixo Risco Coronário</option>
+                </select>
+
+                <button id="btnFilter" class="btn btn-success" type="button">Filtrar Risco</button> 
+            
+                <button id="btnOrderUp" class="btn btn-info" type="button">
+                    <i id="iconOrderUp" class="bi bi-arrow-bar-up"></i>Ordenar LDL-C</button>
+
+                <button id="btnOrderDown" class="btn btn-info" type="button">   
+                    <i id="iconOrderDown" class="bi bi-arrow-bar-down"></i>Ordenar LDL-C</button>
+
+        </div>
+     
+
+        <hr class='my-2'>  
+      
+        <table class="table table-secondary table-responsive">
+            <th>
+                <td>Colesterol Total</td>
+                <td> HDL</td>
+                <td>Triglicerídeos</td>
+                <td>LDL</td>
+                <td>Risco cardiovascular</td>
+            </th>         
+        </table>
+    </div>
+
+    
+
+
+
+    <script src="index.js"></script>
+</body>
+
+</html>
