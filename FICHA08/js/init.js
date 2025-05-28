@@ -1,31 +1,42 @@
-// Importar classe Dog
-import DogModel from "./models/DogModel.js";
+init()
 
-let dogs = [];  // array de objetos
+function init() {
+    // DOGS
+    if (!localStorage.dogs) {
+        const dogs = [
+            {
+                "raca": "Bulldoge Frances",
+                "imagem": "img\\BulldogeFrances.jpg",
+                "link": "https://pt.wikipedia.org/wiki/Border_collie"
+            },
+            {
+                "raca": "Bull Terrier",
+                "imagem": "img\\BullTerrier.jpg",
+                "link": ""
+            },
+            {
+                "raca": "Doberman",
+                "imagem": "img\\Doberman.jpg",
+                "link": ""
+            },
+            {
+                "raca": "Golden Retriever",
+                "imagem": "img\\GoldenRetriever.jpg",
+                "link": ""
+            },
+            {
+                "raca": "Pastor Alemão",
+                "imagem": "img\\PastorAlemao.jpg",
+                "link": ""
+            },
+            {
+                "raca": "Pastor Australiano",
+                "imagem": "img\\PastorAustraliano.jpg",
+                "link": ""
+            }
+        ]
 
-export function init() {
-    
-    let dog = new DogModel('Border Collie','img\\BorderCollie.jpg', '' );
-    dogs.push(dog)
+        localStorage.setItem("dogs", JSON.stringify(dogs));
 
-    dog = new DogModel('Bulldoge Frances', 'img\\BulldogeFrances.jpg', '' );
-    dogs.push(dog)
-    
-    dog = new DogModel('Bull Terrier', 'img\\BullTerrier.jpg', '' );
-    dogs.push(dog)
-    
-    dog = new DogModel('Doberman', 'img\\Doberman.jpg', '' );
-    dogs.push(dog)
-
-    dog = new DogModel('Golden Retriever', 'img\\GoldenRetriever.jpg',  '' );
-    dogs.push(dog)
-
-    dog = new DogModel('Pastor Alemão', 'img\\PastorAlemao.jpg', '' );
-    dogs.push(dog)
-
-    dog = new DogModel('Pastor Australiano',  'img\\PastorAustraliano.jpg', '' );
-    dogs.push(dog)
-
-    return dogs;
-
+    }
 }
